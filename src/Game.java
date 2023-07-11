@@ -36,6 +36,7 @@ public class Game extends JFrame{
     private JButton P;
     public DataB dataB = new DataB();
     public String cuvant;
+    public Character[] cuvantB;
     public Game() {
         newGameButton.addActionListener(new ActionListener() {
             @Override
@@ -541,6 +542,7 @@ public class Game extends JFrame{
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('p')){
+
                         text.setText(text.getText() + " p ");
                     }else {
                         if (i == 0)
