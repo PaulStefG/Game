@@ -36,7 +36,7 @@ public class Game extends JFrame{
     private JButton P;
     public DataB dataB = new DataB();
     public String cuvant;
-    public Character[] cuvantB;
+    public Character[] cuvantDisp, characterCuv;
     public Game() {
         newGameButton.addActionListener(new ActionListener() {
             @Override
@@ -46,512 +46,337 @@ public class Game extends JFrame{
                 Random rand = new Random();
                 int n = rand.nextInt(dataB.cuvinte.length);
                 cuvant = dataB.cuvinte[n];
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
+                characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
 
                 for(int i = 0; i < characterCuv.length; i++) {
 
-                        if (i == 0)
+                        if (i == 0) {
                             text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
+                            cuvantDisp[0]=characterCuv[i];
+                        }
+                        else if (i == characterCuv.length - 1) {
                             text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
-
+                            cuvantDisp[i] = characterCuv[i];
+                        }
+                        else {
+                            text.setText(text.getText() + "_");
+                            cuvantDisp[i]='_';
+                        }
                 }
+
             }
         });
         A.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('a')){
-                        text.setText(text.getText() + " a ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'a';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
+
             }
         });
         Q.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('q')){
-                        text.setText(text.getText() + " q ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'q';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         Z.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('z')){
-                        text.setText(text.getText() + " z ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'z';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         W.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('w')){
-                        text.setText(text.getText() + " w ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'w';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         S.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('s')){
-                        text.setText(text.getText() + " s ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 's';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         X.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('x')){
-                        text.setText(text.getText() + " x ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'x';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         E.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('e')){
-                        text.setText(text.getText() + " e ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'e';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         D.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('d')){
-                        text.setText(text.getText() + " d ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'd';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         C.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('c')){
-                        text.setText(text.getText() + " c ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'c';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         R.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('r')){
-                        text.setText(text.getText() + " r ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'r';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         F.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('f')){
-                        text.setText(text.getText() + " f ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'f';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         V.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('v')){
-                        text.setText(text.getText() + " v ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'v';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         T.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('t')){
-                        text.setText(text.getText() + " t ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 't';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         G.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('g')){
-                        text.setText(text.getText() + " g ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'g';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         B.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('b')){
-                        text.setText(text.getText() + " b ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'b';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         Y.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('y')){
-                        text.setText(text.getText() + " y ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'y';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         H.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('h')){
-                        text.setText(text.getText() + " h ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'h';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         N.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('n')){
-                        text.setText(text.getText() + " n ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'n';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         U.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('u')){
-                        text.setText(text.getText() + " u ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'u';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         J.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('j')){
-                        text.setText(text.getText() + " j ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'j';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         M.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('m')){
-                        text.setText(text.getText() + " m ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'm';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         I.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('i')){
-                        text.setText(text.getText() + " i ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'i';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         K.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('k')){
-                        text.setText(text.getText() + " k ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'k';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         O.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('o')){
-                        text.setText(text.getText() + " o ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'o';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         L.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('l')){
-                        text.setText(text.getText() + " l ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'l';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
         P.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Character[] characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('p')){
 
-                        text.setText(text.getText() + " p ");
-                    }else {
-                        if (i == 0)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]) + " ");
-                        else if (i == characterCuv.length - 1)
-                            text.setText(text.getText() + Character.toString(characterCuv[i]));
-                        else
-                            text.setText(text.getText() + " _ ");
+                        cuvantDisp[i] = 'p';
                     }
+                    text.setText(text.getText() + " " + Character.toString(cuvantDisp[i]));
                 }
             }
         });
