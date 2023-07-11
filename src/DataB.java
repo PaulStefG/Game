@@ -1,3 +1,3 @@
 public class DataB {
-    String[] cuvinte = {"elefant", "leu", "cal de mare"};
+    String[] cuvinte = {"elefant", "leu", "cimpanzeu"};
 }
