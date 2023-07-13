@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Game extends JFrame{
@@ -8,7 +9,6 @@ public class Game extends JFrame{
     private JButton Q;
     private JButton W;
     private JButton E;
-    private JLabel lifeCount;
     private JButton newGameButton;
     private JLabel text;
     private JButton A;
@@ -35,17 +35,22 @@ public class Game extends JFrame{
     private JButton L;
     private JButton P;
     private JLabel Lose;
+    private JLabel heart1;
+    private JLabel heart2;
+    private JLabel heart3;
+    private JLabel heart4;
+    private JLabel heart5;
     public DataB dataB = new DataB();
     public String cuvant;
     public Character[] cuvantDisp, characterCuv;
-    public int life = 3;
+    public int life = 5;
 
     public Game() {
         newGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                life=3;
-                lifeCount.setText(Integer.toString(life));
+                //start
+                life=5;
                 text.setText("");
                 Random rand = new Random();
                 int n = rand.nextInt(dataB.cuvinte.length);
@@ -100,42 +105,18 @@ public class Game extends JFrame{
                     else{
                         A.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         Q.addActionListener(new ActionListener() {
@@ -160,41 +141,18 @@ public class Game extends JFrame{
                     else{
                         Q.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         Z.addActionListener(new ActionListener() {
@@ -219,41 +177,18 @@ public class Game extends JFrame{
                     else{
                         Z.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         W.addActionListener(new ActionListener() {
@@ -278,41 +213,18 @@ public class Game extends JFrame{
                     else{
                         W.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         S.addActionListener(new ActionListener() {
@@ -337,41 +249,18 @@ public class Game extends JFrame{
                     else{
                         S.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         X.addActionListener(new ActionListener() {
@@ -396,41 +285,18 @@ public class Game extends JFrame{
                     else{
                         X.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         E.addActionListener(new ActionListener() {
@@ -454,41 +320,18 @@ public class Game extends JFrame{
                     else{
                         E.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         D.addActionListener(new ActionListener() {
@@ -513,41 +356,18 @@ public class Game extends JFrame{
                     else{
                         D.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         C.addActionListener(new ActionListener() {
@@ -572,41 +392,18 @@ public class Game extends JFrame{
                     else{
                         C.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         R.addActionListener(new ActionListener() {
@@ -631,41 +428,18 @@ public class Game extends JFrame{
                     else{
                         R.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         F.addActionListener(new ActionListener() {
@@ -690,41 +464,18 @@ public class Game extends JFrame{
                     else{
                         F.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         V.addActionListener(new ActionListener() {
@@ -749,41 +500,18 @@ public class Game extends JFrame{
                     else{
                         V.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         T.addActionListener(new ActionListener() {
@@ -808,41 +536,18 @@ public class Game extends JFrame{
                     else{
                         T.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         G.addActionListener(new ActionListener() {
@@ -867,41 +572,18 @@ public class Game extends JFrame{
                     else{
                         G.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         B.addActionListener(new ActionListener() {
@@ -926,41 +608,18 @@ public class Game extends JFrame{
                     else{
                         B.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         Y.addActionListener(new ActionListener() {
@@ -985,41 +644,18 @@ public class Game extends JFrame{
                     else{
                         Y.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         H.addActionListener(new ActionListener() {
@@ -1044,41 +680,18 @@ public class Game extends JFrame{
                     else{
                         H.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         N.addActionListener(new ActionListener() {
@@ -1103,41 +716,18 @@ public class Game extends JFrame{
                     else{
                         N.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         U.addActionListener(new ActionListener() {
@@ -1162,41 +752,18 @@ public class Game extends JFrame{
                     else{
                         U.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         J.addActionListener(new ActionListener() {
@@ -1221,41 +788,18 @@ public class Game extends JFrame{
                     else{
                         J.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         M.addActionListener(new ActionListener() {
@@ -1280,41 +824,18 @@ public class Game extends JFrame{
                     else{
                         M.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         I.addActionListener(new ActionListener() {
@@ -1339,41 +860,18 @@ public class Game extends JFrame{
                     else{
                         I.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         K.addActionListener(new ActionListener() {
@@ -1398,41 +896,18 @@ public class Game extends JFrame{
                     else{
                         K.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         O.addActionListener(new ActionListener() {
@@ -1457,41 +932,18 @@ public class Game extends JFrame{
                     else{
                         O.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         L.addActionListener(new ActionListener() {
@@ -1516,41 +968,18 @@ public class Game extends JFrame{
                     else{
                         L.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+ Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
         P.addActionListener(new ActionListener() {
@@ -1576,42 +1005,18 @@ public class Game extends JFrame{
                     else{
                         P.setEnabled(false);
                         life-=1;
-                        lifeCount.setText(Integer.toString(life));
+                        Hearts(life);
                     }
                 }
-                for (int i = 0; i < cuvantDisp.length; i++){
-                    if(i==0){
-                        text.setText(text.getText() + Character.toString(cuvantDisp[i]));
-                    }
-                    else if (i == cuvantDisp.length-1) {
-                        text.setText(text.getText() +" "+Character.toString(cuvantDisp[i]));
-                    }
-                    else {
-                        text.setText(text.getText()+" " + cuvantDisp[i]);
-                    }
-                }
-                if(life==0){
-                    Lose.setText("YOU LOSE!!!");
-                    text.setText("");
-                    text.setText(cuvant);
-                }
-
+                Display();
+                Lose(life);
                 int count = 0;
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                             count+=1;
                     }
                 }
-                if(count==characterCuv.length) {
-                    Lose.setText("YOU WIN!!");
-                    Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
-                    D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
-                    V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
-                    Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
-                    J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
-                    O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
-                    S.setEnabled(false);W.setEnabled(false);
-                }
+                Win(count);
             }
         });
     }
@@ -1623,5 +1028,68 @@ public class Game extends JFrame{
         c.setSize(600,200);
         c.setVisible(true);
         c.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
+    public void Hearts(int x){
+        if (x == 5) {
+            heart1.setEnabled(true);
+            heart2.setEnabled(true);
+            heart3.setEnabled(true);
+            heart4.setEnabled(true);
+            heart5.setEnabled(true);
+        }
+        if(x == 4)
+            heart5.setEnabled(false);
+        if (x == 3)
+            heart4.setEnabled(false);
+        if (x == 2)
+            heart3.setEnabled(false);
+        if (x == 1)
+            heart2.setEnabled(false);
+        if (x == 0)
+            heart1.setEnabled(false);
+
+    }
+    public void Win(int w){
+        if(w==characterCuv.length) {
+            Lose.setText("YOU WIN!!");
+            Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
+            D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
+            V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
+            Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
+            J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
+            O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
+            S.setEnabled(false);W.setEnabled(false);
+        }
+    }
+    public void Lose(int l){
+        if(l==0){
+            Lose.setText("YOU LOSE!!!");
+            text.setText("");
+            text.setText(cuvant);
+            Q.setEnabled(false);A.setEnabled(false);Z.setEnabled(false);E.setEnabled(false);
+            D.setEnabled(false);C.setEnabled(false);R.setEnabled(false);F.setEnabled(false);
+            V.setEnabled(false);T.setEnabled(false);G.setEnabled(false);B.setEnabled(false);
+            Y.setEnabled(false);H.setEnabled(false);N.setEnabled(false);U.setEnabled(false);
+            J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
+            O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
+            S.setEnabled(false);W.setEnabled(false);
+        }
+    }
+    public void Display(){
+        for (int i = 0; i < cuvantDisp.length; i++){
+            if(i==0){
+                text.setText(text.getText() + Character.toString(cuvantDisp[i]));
+            }
+            else if (i == cuvantDisp.length-1) {
+                text.setText(text.getText() +" "+Character.toString(cuvantDisp[i]));
+            }
+            else {
+                text.setText(text.getText()+" " + cuvantDisp[i]);
+            }
+        }
     }
 }
