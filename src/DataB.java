@@ -12,4 +12,6 @@ public class DataB {
                         "licarire", "trapezoid", "pisiform", "aureola", "bolerou", "nostalgie",
                         "elocvent", "regenerator", "crizantema", "dermatologie", "memorandum",
                         "siliciu", "pneumatic", "carburator"};
+    Integer scor = 0;
+    Integer[] bestScor={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 }

@@ -40,20 +40,26 @@ public class Game extends JFrame{
     private JLabel heart3;
     private JLabel heart4;
     private JLabel heart5;
+    private JLabel scorLab;
+    private JLabel bestS;
     public DataB dataB = new DataB();
     public String cuvant;
     public Character[] cuvantDisp, characterCuv;
     public int life = 5;
+    int n;
 
     public Game() {
         newGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //start
+                dataB.scor=0;
+                scorLab.setText("0");
                 life=5;
                 text.setText("");
                 Random rand = new Random();
-                int n = rand.nextInt(dataB.cuvinte.length);
+                n = rand.nextInt(dataB.cuvinte.length);
+                BestScor();
                 cuvant = dataB.cuvinte[n];
                 characterCuv = cuvant.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
                 cuvantDisp=characterCuv;
@@ -63,6 +69,7 @@ public class Game extends JFrame{
                 G.setEnabled(true);B.setEnabled(true);Y.setEnabled(true);H.setEnabled(true);N.setEnabled(true);
                 U.setEnabled(true);J.setEnabled(true);M.setEnabled(true);I.setEnabled(true);K.setEnabled(true);
                 O.setEnabled(true);L.setEnabled(true);P.setEnabled(true);X.setEnabled(true);S.setEnabled(true);W.setEnabled(true);
+                heart1.setEnabled(true);heart2.setEnabled(true);heart3.setEnabled(true);heart4.setEnabled(true);heart5.setEnabled(true);
                 for(int i = 0; i < characterCuv.length; i++) {
 
                     if (i == 0) {
@@ -90,6 +97,7 @@ public class Game extends JFrame{
                 for(int i = 0; i < characterCuv.length;i++){
                     if(characterCuv[i].equals('a')){
                         cuvantDisp[i]='a';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -106,6 +114,7 @@ public class Game extends JFrame{
                         A.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -126,6 +135,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('q')){
                         cuvantDisp[i] = 'q';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -142,6 +152,7 @@ public class Game extends JFrame{
                         Q.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -162,6 +173,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('z')){
                         cuvantDisp[i] = 'z';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -178,6 +190,7 @@ public class Game extends JFrame{
                         Z.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -198,6 +211,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('w')){
                         cuvantDisp[i] = 'w';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -214,6 +228,7 @@ public class Game extends JFrame{
                         W.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -234,6 +249,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('s')){
                         cuvantDisp[i] = 's';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -250,6 +266,7 @@ public class Game extends JFrame{
                         S.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -270,6 +287,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('x')){
                         cuvantDisp[i] = 'x';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -286,6 +304,7 @@ public class Game extends JFrame{
                         X.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -306,6 +325,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('e')){
                         cuvantDisp[i] = 'e';
+                        ScorP();
                     }
                 }boolean have=false;
                 if(!have) {
@@ -321,6 +341,7 @@ public class Game extends JFrame{
                         E.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -341,6 +362,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('d')){
                         cuvantDisp[i] = 'd';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -357,6 +379,7 @@ public class Game extends JFrame{
                         D.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -377,6 +400,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('c')){
                         cuvantDisp[i] = 'c';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -393,6 +417,7 @@ public class Game extends JFrame{
                         C.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -401,6 +426,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(cuvantDisp[i]==characterCuv[i]){
                         count+=1;
+                        ScorP();
                     }
                 }
                 Win(count);
@@ -413,6 +439,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('r')){
                         cuvantDisp[i] = 'r';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -429,6 +456,7 @@ public class Game extends JFrame{
                         R.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -449,6 +477,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('f')){
                         cuvantDisp[i] = 'f';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -465,6 +494,7 @@ public class Game extends JFrame{
                         F.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -485,6 +515,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('v')){
                         cuvantDisp[i] = 'v';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -501,6 +532,7 @@ public class Game extends JFrame{
                         V.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -521,6 +553,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('t')){
                         cuvantDisp[i] = 't';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -537,6 +570,7 @@ public class Game extends JFrame{
                         T.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -557,6 +591,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('g')){
                         cuvantDisp[i] = 'g';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -573,6 +608,7 @@ public class Game extends JFrame{
                         G.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -593,6 +629,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('b')){
                         cuvantDisp[i] = 'b';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -609,6 +646,7 @@ public class Game extends JFrame{
                         B.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -629,6 +667,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('y')){
                         cuvantDisp[i] = 'y';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -645,6 +684,7 @@ public class Game extends JFrame{
                         Y.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -665,6 +705,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('h')){
                         cuvantDisp[i] = 'h';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -681,6 +722,7 @@ public class Game extends JFrame{
                         H.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -701,6 +743,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('n')){
                         cuvantDisp[i] = 'n';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -717,6 +760,7 @@ public class Game extends JFrame{
                         N.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -737,6 +781,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('u')){
                         cuvantDisp[i] = 'u';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -753,6 +798,7 @@ public class Game extends JFrame{
                         U.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -773,6 +819,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('j')){
                         cuvantDisp[i] = 'j';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -789,6 +836,7 @@ public class Game extends JFrame{
                         J.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -809,6 +857,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('m')){
                         cuvantDisp[i] = 'm';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -825,6 +874,7 @@ public class Game extends JFrame{
                         M.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -845,6 +895,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('i')){
                         cuvantDisp[i] = 'i';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -861,6 +912,7 @@ public class Game extends JFrame{
                         I.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -881,6 +933,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('k')){
                         cuvantDisp[i] = 'k';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -897,6 +950,7 @@ public class Game extends JFrame{
                         K.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -917,6 +971,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('o')){
                         cuvantDisp[i] = 'o';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -933,6 +988,7 @@ public class Game extends JFrame{
                         O.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -953,6 +1009,7 @@ public class Game extends JFrame{
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('l')){
                         cuvantDisp[i] = 'l';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -969,6 +1026,7 @@ public class Game extends JFrame{
                         L.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -988,8 +1046,8 @@ public class Game extends JFrame{
                 text.setText("");
                 for (int i = 0; i < characterCuv.length; i++){
                     if(characterCuv[i].equals('p')){
-
                         cuvantDisp[i] = 'p';
+                        ScorP();
                     }
                 }
                 boolean have=false;
@@ -1006,6 +1064,7 @@ public class Game extends JFrame{
                         P.setEnabled(false);
                         life-=1;
                         Hearts(life);
+                        ScorM();
                     }
                 }
                 Display();
@@ -1063,6 +1122,9 @@ public class Game extends JFrame{
             J.setEnabled(false);M.setEnabled(false);I.setEnabled(false);K.setEnabled(false);
             O.setEnabled(false);L.setEnabled(false);P.setEnabled(false);X.setEnabled(false);
             S.setEnabled(false);W.setEnabled(false);
+            if(Integer.parseInt( scorLab.getText())>Integer.parseInt(bestS.getText())){
+                dataB.bestScor[n]=dataB.scor;
+            }
         }
     }
     public void Lose(int l){
@@ -1091,5 +1153,26 @@ public class Game extends JFrame{
                 text.setText(text.getText()+" " + cuvantDisp[i]);
             }
         }
+    }
+    public void ScorP(){
+        if(heart5.isEnabled()){
+            dataB.scor+=100*5;
+        } else if (heart4.isEnabled()) {
+            dataB.scor+=100*4;
+        } else if (heart3.isEnabled()) {
+            dataB.scor+=100*3;
+        } else if (heart2.isEnabled()) {
+            dataB.scor+=100*2;
+        } else if (heart1.isEnabled()) {
+            dataB.scor+=100;
+        }
+        scorLab.setText(Integer.toString(dataB.scor));
+    }
+    public void ScorM(){
+        dataB.scor-=200;
+        scorLab.setText(Integer.toString(dataB.scor));
+    }
+    public void BestScor(){
+        bestS.setText(Integer.toString(dataB.bestScor[n]));
     }
 }
